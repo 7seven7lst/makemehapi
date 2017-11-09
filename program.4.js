@@ -9,9 +9,7 @@ server.connection({
   port: Number(process.argv[2] || 8080),
 })
 
-server.register({  
-  register: require('inert')
-}, function(err) {
+server.register({register: require('inert')}, err => {
   if (err) throw err
 
   server.route({  
@@ -26,9 +24,4 @@ server.register({
   server.start( err => {
     console.log('Server started at: ' + server.info.uri)
   })
-})
-
-
-
-
-
+});
