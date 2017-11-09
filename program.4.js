@@ -1,7 +1,7 @@
-var Hapi = require('hapi')
+const Hapi = require('hapi')
 
 // create new server instance
-var server = new Hapi.Server()
+const server = new Hapi.Server()
 
 // add server’s connection information
 server.connection({  
@@ -23,7 +23,7 @@ server.register({
       }
     }
   })
-  server.start(function(err) {
+  server.start( err => {
     console.log('Server started at: ' + server.info.uri)
   })
 })

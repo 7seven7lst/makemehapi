@@ -6,20 +6,18 @@ server.connection({
   host: 'localhost' 
 });
 
+server.register(require('inert'), err => {
+  if (err) {
+    throw err;
+  }
 
-server.register(require('inert'), (err) => {
-
-    if (err) {
-        throw err;
+  server.route({
+    method: 'GET',
+    path: '/{name*}',
+    handler: function (request, reply) {
+        reply.file('./index.html');
     }
-
-    server.route({
-        method: 'GET',
-        path: '/{name*}',
-        handler: function (request, reply) {
-            reply.file('./index.html');
-        }
-    });
+  });
 });
 
 server.start();
